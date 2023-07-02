@@ -3,6 +3,8 @@ import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
 
+import Navbar from "@/components/Navbar";
+
 export default async function DashobardLayout({
   children,
   params,
@@ -29,7 +31,7 @@ export default async function DashobardLayout({
 
   return (
     <>
-      <div>This will be a navbar</div>
+      <Navbar />
       {children}
     </>
   );
