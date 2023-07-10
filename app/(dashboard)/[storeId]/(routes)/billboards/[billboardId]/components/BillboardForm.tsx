@@ -87,10 +87,12 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
     <>
       <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onDelete} loading={loading} />
       <div className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage store preferences" />
-        <Button disabled={loading} variant="destructive" size="icon" onClick={() => setOpen(true)}>
-          <Trash className="h-4 w-4" />
-        </Button>
+        <Heading title={title} description={description} />
+        {initialData && (
+          <Button disabled={loading} variant="destructive" size="icon" onClick={() => setOpen(true)}>
+            <Trash className="h-4 w-4" />
+          </Button>
+        )}
       </div>
       <Separator />
       <Form {...form}>
@@ -98,12 +100,12 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="name"
+              name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Label</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Store name" {...field} />
+                    <Input disabled={loading} placeholder="Billboard label" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,16 +113,11 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            Save changes
+            {action}
           </Button>
         </form>
       </Form>
       <Separator />
-      <ApiAlert
-        title="NEXT_PUBLIC_API_URL"
-        description={`${origin}/api/${params.storeId}`}
-        variant="public"
-      />
     </>
   );
 };
