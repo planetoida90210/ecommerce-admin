@@ -16,8 +16,6 @@ import { Separator } from "@/components/ui/separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/AlertModal";
-import { ApiAlert } from "@/components/ui/ApiAlert";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/ImageUpload";
 
 interface BillboardFormProps {
@@ -34,7 +32,7 @@ type BillboardFormValues = z.infer<typeof formSchema>;
 const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
