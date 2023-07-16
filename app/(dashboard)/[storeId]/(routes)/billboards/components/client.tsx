@@ -7,7 +7,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import { BillboardColumn, columns } from "./Columns";
+import { BillboardColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 
 interface BillboardClientProps {
@@ -26,7 +26,7 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
         </Button>
       </div>
       <Separator />
-      <DataTable columns={columns} data={data} />
+      <DataTable searchKey="label" columns={columns} data={data} />
     </>
   );
 };
