@@ -51,7 +51,7 @@ model Category {
 
 model Size {
   id        String   @id @default(uuid())
-  storeId   String
+  storeId   String // Foreign Key to Store
   store     Store    @relation("StoreToSize", fields: [storeId], references: [id])
   name      String
   value     String
